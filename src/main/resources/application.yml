@@ -1,0 +1,45 @@
+server:
+  port: 8080
+  contextPath:
+  upload:
+    dir: /data/log/upload/
+  mockEnable: true
+
+spring:
+  aop:
+    proxy-target-class: true
+    
+  profiles:
+    active: dev
+
+  dataSource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/seed?serverTimezone=UTC
+    username: root
+    password: mysql
+
+  hibernate:
+    dialect: org.hibernate.dialect.MySQLDialect
+    hbm2ddl.auto: create
+    show_sql: true
+    persistenceUnitName: seed
+    packagesToScan: com.qhkj.seed
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    expiration: 604800    
+
+logging:
+  path: /tmp/log/sbs
+
+jwt:
+  secret: mySecret
+  expiration: 604800
+  authType: Bearer
+
+qiniu:
+  accessKey: IZV4vlVHlVOS6lpaOD0XPL4ez5s69tforscCA_GO
+  secretKey: rKN1i8N4ilLVxvZGpxLCt7JhDMA-P7W27x3xUAkW
+  bucketName: seed
+  bucketHost: og0d6ah43.bkt.clouddn.com
